@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Frederico Ribeiro Ferreira</title>
+<meta name="description" content="Frederico Ribeiro Ferreira: MBA Candidate at Columbia Business School, formerly McKinsey & Company and M&A at Sonae.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F3F5F9; --bg2:#E6EAF1; --paper:#FFFFFF;
+    --navy:#15284B; --navy-tint:#DDE4F0; --mid:#2D4A7C;
+    --amber:#F2A900; --amber-tint:#FDF0CC; --amber-txt:#7A5200; --on-amber:#15284B;
+    --text:#1E2430; --muted:#5B6475; --line:#DDE2EA;
+    --r:18px; --nav-h:64px;
+    color-scheme:light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#0E1524; --bg2:#1A2540; --paper:#152038;
+      --navy:#E8EDF7; --navy-tint:#1F2E52; --mid:#9DB5E0;
+      --amber:#F2A900; --amber-tint:#3A2D0C; --amber-txt:#F7C64D; --on-amber:#15284B;
+      --text:#D8DEE9; --muted:#9AA4B8; --line:#26334F;
+      color-scheme:dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#0E1524; --bg2:#1A2540; --paper:#152038;
+    --navy:#E8EDF7; --navy-tint:#1F2E52; --mid:#9DB5E0;
+    --amber:#F2A900; --amber-tint:#3A2D0C; --amber-txt:#F7C64D; --on-amber:#15284B;
+    --text:#D8DEE9; --muted:#9AA4B8; --line:#26334F;
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 16px)}
+  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
+  a{color:var(--mid)}
+  a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:8px}
+  svg.i{width:20px;height:20px;fill:currentColor;flex:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+  @media (max-width:600px){.wrap{padding:0 16px}}
+
+  /* ---------- Top bar ---------- */
+  .top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+  .top .wrap{display:flex;align-items:center;gap:16px;height:var(--nav-h)}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:800;white-space:nowrap}
+  .brand .mono{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--navy);color:var(--bg);font-size:13px;letter-spacing:.02em}
+  :root[data-theme="dark"] .brand .mono{background:var(--amber);color:var(--on-amber)}
+  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .brand .mono{background:var(--amber);color:var(--on-amber)}}
+  .links{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none;min-width:0}
+  .links::-webkit-scrollbar{display:none}
+  .links a{text-decoration:none;color:var(--muted);font-weight:700;font-size:14px;padding:7px 12px;border-radius:999px;white-space:nowrap;transition:background .15s,color .15s}
+  .links a:hover{color:var(--navy);background:var(--bg2)}
+  .links a.on{color:var(--amber-txt);background:var(--amber-tint)}
+  .social{display:flex;gap:6px;padding-left:8px;border-left:1px solid var(--line)}
+  .social a{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;color:var(--navy)}
+  .social a:hover{background:var(--bg2)}
+  @media (max-width:760px){
+    .brand .full{display:none}
+    .social{display:none}
+    .links a{padding:7px 10px;font-size:13.5px}
+  }
+
+  /* ---------- Hero ---------- */
+  .hero{padding:56px 0 28px}
+  .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:48px;align-items:center}
+  .eyebrow{font-size:13px;letter-spacing:.09em;text-transform:uppercase;font-weight:800;color:var(--mid);margin:0}
+  .hero h1{margin:10px 0 14px;font-size:clamp(36px,6vw,56px);line-height:1.06;font-weight:800;letter-spacing:-.025em;color:var(--navy)}
+  .hero h1 .hl{background:linear-gradient(transparent 62%,var(--amber-tint) 62%);padding:0 2px}
+  .lede{font-size:19px;color:var(--muted);max-width:620px;margin:0 0 20px}
+  .lede strong{color:var(--text)}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:0;list-style:none}
+  .chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:14px;font-weight:600;color:var(--muted)}
+  .chip b{color:var(--navy)}
+  .btns{display:flex;flex-wrap:wrap;gap:10px}
+  .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;padding:10px 18px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--navy);transition:transform .15s,border-color .15s}
+  .btn:hover{transform:translateY(-1px);border-color:var(--mid)}
+  .btn.primary{background:var(--navy);border-color:var(--navy);color:var(--bg)}
+  .photo{width:220px;height:220px;border-radius:50%;object-fit:cover;border:6px solid var(--paper);box-shadow:0 0 0 2px var(--amber);justify-self:end;background:var(--bg2)}
+  @media (max-width:760px){
+    .hero{padding:32px 0 20px}
+    .hero .wrap{grid-template-columns:1fr;gap:20px}
+    .photo{order:-1;justify-self:start;width:112px;height:112px;border-width:4px}
+    .lede{font-size:17px}
+  }
+
+  /* ---------- Quick tiles ---------- */
+  .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:8px 0 40px}
+  .tile{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 16px;transition:transform .15s,border-color .15s}
+  .tile:hover{transform:translateY(-2px);border-color:var(--amber)}
+  .tile .n{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--amber);color:var(--on-amber);font-weight:800;font-size:13px}
+  .tile h2{margin:6px 0 0;font-size:16px;line-height:1.3;color:var(--navy)}
+  .tile p{margin:0;font-size:14px;line-height:1.5;color:var(--muted)}
+  .tile .go{margin-top:auto;padding-top:6px;font-size:13px;font-weight:700;color:var(--mid)}
+  @media (max-width:900px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+  /* ---------- Sections ---------- */
+  section.sec{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:32px 36px;margin-bottom:20px}
+  @media (max-width:600px){section.sec{padding:22px 18px;border-radius:18px}}
+  .sec-h{display:flex;align-items:center;gap:12px;margin:0 0 22px;font-size:24px;line-height:1.25;color:var(--navy)}
+  .sec-h .n{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--amber);color:var(--on-amber);font-size:15px;flex:none}
+
+  /* Entries (education & roles) */
+  .entry{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 24px;padding:20px 0;border-top:1px solid var(--line)}
+  .entry:first-of-type{border-top:0;padding-top:0}
+  .entry h3{margin:0;font-size:18px;line-height:1.35;color:var(--navy)}
+  .entry h3 .note{font-weight:600;color:var(--muted);font-size:14.5px}
+  .entry .role{margin:0;font-style:italic;color:var(--text)}
+  .entry .meta{text-align:right;font-size:14px;color:var(--muted);white-space:nowrap}
+  .entry .meta b{display:block;color:var(--navy);font-size:14.5px}
+  .entry .body{grid-column:1/-1;margin-top:10px}
+  .entry ul{margin:0;padding-left:20px}
+  .entry li{margin:4px 0}
+  @media (max-width:600px){
+    .entry{grid-template-columns:1fr}
+    .entry .meta{text-align:left;white-space:normal;margin-top:4px}
+    .entry .meta b{display:inline;margin-right:8px}
+  }
+  .grade{display:inline-block;background:var(--navy-tint);color:var(--navy);font-weight:700;font-size:13px;border-radius:999px;padding:1px 10px;margin-left:6px;font-style:normal}
+
+  .intro{margin:0 0 16px;color:var(--text)}
+
+  /* Highlight stats */
+  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 20px}
+  .stat{background:var(--bg);border-radius:14px;padding:14px 16px}
+  .stat .v{font-size:24px;font-weight:800;line-height:1.2;color:var(--navy);letter-spacing:-.01em}
+  .stat .l{font-size:13px;line-height:1.45;color:var(--muted);margin-top:4px}
+  @media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+  /* Sector tabs */
+  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
+  .tab{font:inherit;font-size:14px;font-weight:700;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--muted);cursor:pointer}
+  .tab:hover{color:var(--navy);border-color:var(--mid)}
+  .tab[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:var(--bg)}
+  .tab .c{font-weight:600;opacity:.7;margin-left:4px}
+  .panel{background:var(--bg);border-radius:16px;padding:18px 20px}
+  .panel[hidden]{display:none}
+  .proj{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 16px;padding:12px 0;border-top:1px dashed var(--line)}
+  .proj:first-child{border-top:0;padding-top:0}
+  .proj:last-child{padding-bottom:0}
+  .proj .k{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--amber-txt);padding-top:3px}
+  .proj p{margin:0}
+  @media (max-width:600px){.proj{grid-template-columns:1fr}}
+
+  /* Deal tiles */
+  .deals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+  .deal{background:var(--bg);border-radius:16px;padding:16px 18px;border-left:4px solid var(--amber)}
+  .deal .top-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin-bottom:6px}
+  .deal .amt{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
+  .deal .tag{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mid);background:var(--navy-tint);border-radius:999px;padding:2px 10px}
+  .deal p{margin:0;font-size:15px;line-height:1.6}
+  @media (max-width:760px){.deals{grid-template-columns:1fr}}
+
+  /* Cards grid (activities, skills) */
+  .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+  @media (max-width:900px){.grid3{grid-template-columns:1fr}}
+  .card{background:var(--bg);border-radius:16px;padding:18px 20px}
+  .card h3{margin:0 0 2px;font-size:17px;color:var(--navy)}
+  .card .when{font-size:13px;font-weight:700;color:var(--amber-txt)}
+  .card p{margin:8px 0 0;font-size:15px;line-height:1.6}
+  .sub-h{margin:0 0 12px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--mid)}
+  .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;padding:0;list-style:none}
+  .pills li{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:2px 11px;font-size:13.5px;font-weight:600;color:var(--navy)}
+
+  /* Footer */
+  footer{padding:24px 0 56px;color:var(--muted);font-size:14px}
+  footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
+  footer .f-links{display:flex;gap:16px}
+  footer a{font-weight:700;text-decoration:none}
+  footer a:hover{text-decoration:underline}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Frederico Ribeiro Ferreira, back to top">
+      <span class="mono">FRF</span><span class="full">Frederico Ribeiro Ferreira</span>
+    </a>
+    <nav class="links" aria-label="Sections">
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#activities">Activities</a>
+      <a href="#skills">Skills &amp; Interests</a>
+    </nav>
+    <div class="social">
+      <a href="https://www.linkedin.com/in/frederico-ribeiro-ferreira/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zM9.5 9.75h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.02c0-1.2-.02-2.74-1.67-2.74-1.67 0-1.93 1.3-1.93 2.65V21h-4V9.75z"/></svg>
+      </a>
+      <a href="https://github.com/fredericoferreira12" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- ===== Hero ===== -->
+  <div class="hero">
+    <div class="wrap">
+      <div>
+        <p class="eyebrow">MBA Candidate · Columbia Business School</p>
+        <h1>Hi, I'm <span class="hl">Frederico</span>.</h1>
+        <p class="lede">Economist from Porto, <strong>strategy consultant at McKinsey</strong>, with a stint doing <strong>M&amp;A at Sonae</strong>. Now in New York for my MBA.</p>
+        <ul class="chips">
+          <li class="chip"><b>New York</b>, USA</li>
+          <li class="chip">8+ consulting projects</li>
+          <li class="chip">4 M&amp;A transactions</li>
+          <li class="chip">PT · EN · ES</li>
+        </ul>
+        <div class="btns">
+          <a class="btn primary" href="https://www.linkedin.com/in/frederico-ribeiro-ferreira/" target="_blank" rel="noopener">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zM9.5 9.75h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.02c0-1.2-.02-2.74-1.67-2.74-1.67 0-1.93 1.3-1.93 2.65V21h-4V9.75z"/></svg>
+            Connect on LinkedIn
+          </a>
+          <a class="btn" href="https://github.com/fredericoferreira12" target="_blank" rel="noopener">
+            <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+            GitHub
+          </a>
+        </div>
+      </div>
+      <img class="photo" src="Linkedin%20picture.jpg" alt="Portrait of Frederico Ribeiro Ferreira" width="220" height="220">
+    </div>
+  </div>
+
+  <div class="wrap">
+
+    <!-- ===== Quick tiles ===== -->
+    <nav class="tiles" aria-label="Jump to a section">
+      <a class="tile" href="#education">
+        <span class="n">1</span>
+        <h2>Education</h2>
+        <p>Columbia MBA · BSc Economics, Universidade do Porto</p>
+        <span class="go">See education →</span>
+      </a>
+      <a class="tile" href="#experience">
+        <span class="n">2</span>
+        <h2>Work Experience</h2>
+        <p>McKinsey &amp; Company · M&amp;A secondment at Sonae</p>
+        <span class="go">See experience →</span>
+      </a>
+      <a class="tile" href="#activities">
+        <span class="n">3</span>
+        <h2>Extra-curricular</h2>
+        <p>Rugby team captain · Brazilian Jiu-Jitsu · Padel</p>
+        <span class="go">See activities →</span>
+      </a>
+      <a class="tile" href="#skills">
+        <span class="n">4</span>
+        <h2>Skills &amp; Interests</h2>
+        <p>Languages, IT skills, travel, rock, wine, piano</p>
+        <span class="go">See skills →</span>
+      </a>
+    </nav>
+
+    <!-- ===== 1. Education ===== -->
+    <section class="sec" id="education" aria-labelledby="h-edu">
+      <h2 class="sec-h" id="h-edu"><span class="n">1</span>Education</h2>
+
+      <article class="entry">
+        <div>
+          <h3>Columbia Business School</h3>
+          <p class="role">MBA Candidate</p>
+        </div>
+        <div class="meta"><b>Jan 2026 – May 2027</b>New York, USA</div>
+        <div class="body">
+          <ul class="pills" aria-label="Clubs">
+            <li>AI Club</li><li>Entrepreneurship Through Acquisition</li><li>Adam Smith Society</li><li>Rugby Club</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div>
+          <h3>Universidade do Porto <span class="note">(#1 University in Portugal 2021, QS Ranking)</span></h3>
+          <p class="role">BSc in Economics <span class="grade">17,4/20</span></p>
+        </div>
+        <div class="meta"><b>Sep 2019 – Jun 2022</b>Porto, Portugal</div>
+        <div class="body">
+          <p style="margin:0 0 6px;font-weight:700;color:var(--navy)">Main courses</p>
+          <ul class="pills" aria-label="Main courses">
+            <li>Macroeconomics (19)</li><li>Statistics (19)</li><li>Economics and Public Finance (19)</li><li>Financial Markets (17)</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="entry">
+        <div>
+          <h3>Garcia de Orta <span class="note">(#1 Public High School in Portugal 2018)</span></h3>
+          <p class="role">High School Diploma <span class="grade">19/20</span></p>
+        </div>
+        <div class="meta"><b>Sep 2016 – Jun 2019</b>Porto, Portugal</div>
+      </article>
+    </section>
+
+    <!-- ===== 2. Work experience ===== -->
+    <section class="sec" id="experience" aria-labelledby="h-work">
+      <h2 class="sec-h" id="h-work"><span class="n">2</span>Work Experience</h2>
+
+      <!-- McKinsey -->
+      <article class="entry">
+        <div>
+          <h3>McKinsey &amp; Company</h3>
+          <p class="role">Business Analyst (until Nov/24) / Associate</p>
+        </div>
+        <div class="meta"><b>Oct 2022 – Today</b>Lisbon, Portugal</div>
+        <div class="body">
+          <p class="intro">8+ strategy and operational consulting projects in banking, insurance, retail, energy and agriculture.</p>
+
+          <div class="stats">
+            <div class="stat"><div class="v">−20%</div><div class="l">waiting time at a major Portuguese bank</div></div>
+            <div class="stat"><div class="v">+€54M</div><div class="l">net banking income in year one from a new incentives model</div></div>
+            <div class="stat"><div class="v">~90M€</div><div class="l">targeted revenue uplift from assortment optimization</div></div>
+            <div class="stat"><div class="v">€100M+</div><div class="l">financing secured after a commercial due diligence</div></div>
+          </div>
+
+          <div class="tabs" role="tablist" aria-label="Projects by sector">
+            <button class="tab" role="tab" id="t-bank" aria-controls="p-bank" aria-selected="true">Banking<span class="c">5</span></button>
+            <button class="tab" role="tab" id="t-ins" aria-controls="p-ins" aria-selected="false" tabindex="-1">Insurance<span class="c">2</span></button>
+            <button class="tab" role="tab" id="t-ret" aria-controls="p-ret" aria-selected="false" tabindex="-1">Retail<span class="c">1</span></button>
+            <button class="tab" role="tab" id="t-agr" aria-controls="p-agr" aria-selected="false" tabindex="-1">Fresh food / agriculture<span class="c">1</span></button>
+          </div>
+
+          <div class="panel" role="tabpanel" id="p-bank" aria-labelledby="t-bank">
+            <div class="proj"><div class="k">Retail</div><p>Transformed the customer experience of a major bank in Portugal by i) introducing a new branch type and ii) increasing digitalization in back and front offices, contributing to a 20% decrease in waiting time, and to achieving the lowest cost-to-income ratio in Iberia.</p></div>
+            <div class="proj"><div class="k">Retail</div><p>Reviewed and implemented a new incentives model for relationship managers, contributing to an increase of +€54M in net banking income in the first year.</p></div>
+            <div class="proj"><div class="k">Corporate</div><p>Developed the bank's strategic plan for the following 4 years.</p></div>
+            <div class="proj"><div class="k">M&amp;A</div><p>Identified 10+ acquisition opportunities; deep-dived in 2 selected bets with the detail on the play / plan to capture (up to 2,2–2,4B€ potential acquisition deal).</p></div>
+            <div class="proj"><div class="k">Others</div><p>Identified potential to optimize internal cost structure and defined 30+ levers to implement it; reviewed and implemented new 1st and 2nd line triggers to prevent internal fraud.</p></div>
+          </div>
+          <div class="panel" role="tabpanel" id="p-ins" aria-labelledby="t-ins" hidden>
+            <div class="proj"><div class="k">Digital marketing</div><p>Facilitated a key partnership between a leading credit specialist and a major insurance company, and enhanced its digital marketing strategy, optimizing the sales funnel across multiple channels.</p></div>
+            <div class="proj"><div class="k">Business building</div><p>Developed a pilot to establish a new business unit for a leading insurance company, with an estimated accumulated revenues of up to €~260M over a period of 5 years.</p></div>
+          </div>
+          <div class="panel" role="tabpanel" id="p-ret" aria-labelledby="t-ret" hidden>
+            <div class="proj"><div class="k">Assortment</div><p>Implemented a new assortment optimization methodology, accelerating category review from 15 categories in 3 months to 45 categories in 1 month, with the goal of achieving an impact of ~90M€ revenue uplift.</p></div>
+          </div>
+          <div class="panel" role="tabpanel" id="p-agr" aria-labelledby="t-agr" hidden>
+            <div class="proj"><div class="k">Commercial DD</div><p>Conducted a commercial-DD for an emerging agriculture player, focusing on avocados and tangerines market, and the company positioning, contributing to securing €100M+ in financing.</p></div>
+          </div>
+        </div>
+      </article>
+
+      <!-- Sonae -->
+      <article class="entry">
+        <div>
+          <h3>Sonae</h3>
+          <p class="role">M&amp;A Associate (Secondment from McKinsey)</p>
+        </div>
+        <div class="meta"><b>Mar 2025 – Dec 2025</b>Porto, Portugal</div>
+        <div class="body">
+          <p class="intro">3 end-to-end buy-side transactions and 1 sell-side, from LBO and DCF modeling to contract writing and negotiation.</p>
+          <div class="deals">
+            <div class="deal">
+              <div class="top-row"><span class="amt">€31Mn</span><span class="tag">Real estate · Buy-side</span></div>
+              <p>Acquisition of a German real-estate third-party manager, part of a complex carve-out involving the separation of the own assets and third-party assets of the carved-out entity (c. 5x EBITDA multiple) + design and implementation of integration plan.</p>
+            </div>
+            <div class="deal">
+              <div class="top-row"><span class="amt">€100Mn</span><span class="tag">Real estate · Sell-side</span></div>
+              <p>Sell-side transaction of Sonae's minority stake in a Brazilian asset.</p>
+            </div>
+            <div class="deal">
+              <div class="top-row"><span class="amt">€60Mn</span><span class="tag">Fitness · Buy-side</span></div>
+              <p>Acquisition of a Portuguese fitness player with 13 open gyms and a pipeline of 15 additional openings before closing (covered in earn-out) at a c. 6.4x EBITDA multiple.</p>
+            </div>
+            <div class="deal">
+              <div class="top-row"><span class="amt">€2.5Mn</span><span class="tag">Plant-based food · Buy-side</span></div>
+              <p>Acquisition of a 5% stake in a French early-stage company focused on transforming industrial side-streams into strategic raw materials (expected to triple revenues within three years).</p>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <!-- ===== 3. Extra-curricular ===== -->
+    <section class="sec" id="activities" aria-labelledby="h-act">
+      <h2 class="sec-h" id="h-act"><span class="n">3</span>Extra-curricular Activities</h2>
+      <p class="sub-h">Sports</p>
+      <div class="grid3">
+        <div class="card">
+          <h3>Rugby</h3>
+          <span class="when">2014 – 2019</span>
+          <p>Federated rugby player at CDUP (3 one-and-a-half-hour practices + 1 match per week) and team captain at U-16s.</p>
+        </div>
+        <div class="card">
+          <h3>Brazilian Jiu-Jitsu</h3>
+          <span class="when">Competed 2007 – 2013</span>
+          <p>Competed for six years, reaching green belt.</p>
+        </div>
+        <div class="card">
+          <h3>Padel</h3>
+          <span class="when">2023 – today</span>
+          <p>Playing at an amateur level, with weekly training sessions.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== 4. Languages, skills and interests ===== -->
+    <section class="sec" id="skills" aria-labelledby="h-skl">
+      <h2 class="sec-h" id="h-skl"><span class="n">4</span>Languages, Skills &amp; Interests</h2>
+      <div class="grid3">
+        <div class="card">
+          <h3>Languages</h3>
+          <ul class="pills">
+            <li>Portuguese · Native</li>
+            <li>English · Fluent (IELTS C2, 8.5)</li>
+            <li>Spanish · Practical</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>IT Skills</h3>
+          <p style="margin-top:4px;font-size:14px;color:var(--muted)">Proficient</p>
+          <ul class="pills" style="margin-top:6px"><li>Excel</li><li>PowerPoint</li><li>Word</li></ul>
+          <p style="margin-top:12px;font-size:14px;color:var(--muted)">Solid grasp</p>
+          <ul class="pills" style="margin-top:6px"><li>Alteryx</li><li>Knime</li></ul>
+        </div>
+        <div class="card">
+          <h3>Interests</h3>
+          <p><b>Travelling:</b> visited countries in Europe, Asia, Africa and South America.</p>
+          <p><b>Rock:</b> although born in the early 2000s, I have an '80s music style.</p>
+          <p><b>Wine:</b> aiming to achieve WSET Level 2.</p>
+          <p><b>Piano:</b> recently learned.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Frederico Ribeiro Ferreira · New York</span>
+    <div class="f-links">
+      <a href="https://www.linkedin.com/in/frederico-ribeiro-ferreira/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/fredericoferreira12" target="_blank" rel="noopener">GitHub</a>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Sector tabs (click + arrow keys)
+  const tabs = [...document.querySelectorAll('.tab')];
+  function select(tab){
+    tabs.forEach(t=>{
+      const on = t === tab;
+      t.setAttribute('aria-selected', on);
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach((t,i)=>{
+    t.addEventListener('click', ()=>select(t));
+    t.addEventListener('keydown', e=>{
+      if(e.key!=='ArrowRight' && e.key!=='ArrowLeft') return;
+      const next = tabs[(i + (e.key==='ArrowRight'?1:-1) + tabs.length) % tabs.length];
+      select(next); next.focus(); e.preventDefault();
+    });
+  });
+
+  // Highlight the current section in the top bar
+  const navLinks = [...document.querySelectorAll('.links a')];
+  const byId = Object.fromEntries(navLinks.map(a=>[a.hash.slice(1), a]));
+  const seen = new Map();
+  const io = new IntersectionObserver(entries=>{
+    entries.forEach(e=>seen.set(e.target.id, e.isIntersecting));
+    const current = navLinks.map(a=>a.hash.slice(1)).find(id=>seen.get(id));
+    navLinks.forEach(a=>a.classList.toggle('on', a.hash.slice(1)===current));
+    if(current) byId[current].scrollIntoView({block:'nearest', inline:'nearest'});
+  }, {rootMargin:'-40% 0px -55% 0px'});
+  Object.keys(byId).forEach(id=>io.observe(document.getElementById(id)));
+</script>
+</body>
+</html>
