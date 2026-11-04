@@ -45,7 +45,7 @@
   @media (max-width:600px){.wrap{padding:0 16px}}
 
   /* ---------- Top bar ---------- */
-  .top{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:saturate(1.4) blur(10px);-webkit-backdrop-filter:saturate(1.4) blur(10px);border-bottom:1px solid var(--line)}
+  .top{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
   .top .wrap{display:flex;align-items:center;gap:16px;height:var(--nav-h)}
   .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:800;white-space:nowrap}
   .brand .mono{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--navy);color:var(--bg);font-size:13px;letter-spacing:.02em}
@@ -53,7 +53,7 @@
   @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .brand .mono{background:var(--amber);color:var(--on-amber)}}
   .links{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none;min-width:0}
   .links::-webkit-scrollbar{display:none}
-  .links a{text-decoration:none;color:var(--muted);font-weight:700;font-size:14px;padding:7px 12px;border-radius:999px;white-space:nowrap;transition:background .15s,color .15s}
+  .links a{text-decoration:none;color:var(--muted);font-weight:700;font-size:14px;padding:7px 12px;border-radius:999px;white-space:nowrap}
   .links a:hover{color:var(--navy);background:var(--bg2)}
   .links a.on{color:var(--amber-txt);background:var(--amber-tint)}
   .social{display:flex;gap:6px;padding-left:8px;border-left:1px solid var(--line)}
@@ -463,17 +463,30 @@
     });
   });
 
-  // Highlight the current section in the top bar
-  const navLinks = [...document.querySelectorAll('.links a')];
-  const byId = Object.fromEntries(navLinks.map(a=>[a.hash.slice(1), a]));
-  const seen = new Map();
-  const io = new IntersectionObserver(entries=>{
-    entries.forEach(e=>seen.set(e.target.id, e.isIntersecting));
-    const current = navLinks.map(a=>a.hash.slice(1)).find(id=>seen.get(id));
-    navLinks.forEach(a=>a.classList.toggle('on', a.hash.slice(1)===current));
-    if(current) byId[current].scrollIntoView({block:'nearest', inline:'nearest'});
-  }, {rootMargin:'-40% 0px -55% 0px'});
-  Object.keys(byId).forEach(id=>io.observe(document.getElementById(id)));
+  // Highlight the current section in the top bar.
+  // Only toggles a class when the section changes; never scrolls the page.
+  const nav = document.querySelector('.links');
+  const navLinks = [...nav.querySelectorAll('a')];
+  const sections = navLinks.map(a=>document.getElementById(a.hash.slice(1)));
+  let active = -1, ticking = false;
+  function update(){
+    ticking = false;
+    const line = innerHeight * 0.35;
+    let idx = -1;
+    sections.forEach((s,i)=>{ if(s.getBoundingClientRect().top <= line) idx = i; });
+    if(innerHeight + scrollY >= document.documentElement.scrollHeight - 4) idx = sections.length - 1;
+    if(idx === active) return;
+    active = idx;
+    navLinks.forEach((a,i)=>a.classList.toggle('on', i===idx));
+    // On narrow screens, slide the nav strip sideways only (not the page)
+    if(idx >= 0 && nav.scrollWidth > nav.clientWidth){
+      const a = navLinks[idx];
+      nav.scrollTo({left: a.offsetLeft - nav.offsetLeft - 8, behavior:'auto'});
+    }
+  }
+  addEventListener('scroll', ()=>{ if(!ticking){ ticking = true; requestAnimationFrame(update); } }, {passive:true});
+  addEventListener('resize', update);
+  update();
 </script>
 </body>
 </html>
