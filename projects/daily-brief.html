@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Daily Brief · Frederico Ribeiro Ferreira</title>
+<meta name="description" content="Daily Brief: an AI agent that reads the news every morning, picks the stories that matter and writes a personal brief.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/style.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="../index.html" aria-label="Frederico Ribeiro Ferreira, home page">
+      <span class="mono">FRF</span><span class="full">Frederico Ribeiro Ferreira</span>
+    </a>
+    <a class="crumb" href="../index.html#portfolio">← All projects</a>
+    <div class="social">
+      <a href="https://www.linkedin.com/in/frederico-ribeiro-ferreira/" target="_blank" rel="noopener" aria-label="LinkedIn">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9.75h4V21H3V9.75zM9.5 9.75h3.83v1.54h.06c.53-1 1.84-2.06 3.79-2.06 4.05 0 4.8 2.67 4.8 6.13V21h-4v-5.02c0-1.2-.02-2.74-1.67-2.74-1.67 0-1.93 1.3-1.93 2.65V21h-4V9.75z"/></svg>
+      </a>
+      <a href="https://github.com/fredericoferreira12" target="_blank" rel="noopener" aria-label="GitHub">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.45-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.52 2.34 1.08 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.64 0 0 .84-.27 2.75 1.02a9.56 9.56 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.37.2 2.39.1 2.64.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>
+      </a>
+    </div>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+
+    <div class="p-hero">
+      <p class="kicker">AI agent · Personal project · 2026</p>
+      <h1>Daily Brief</h1>
+      <p class="lede">I wanted one place to read the news that matters to me each morning, without opening ten sites and a pile of newsletters. So I built an AI agent that does it for me.</p>
+      <ul class="pills" aria-label="Built with">
+        <li>Claude scheduled agent</li><li>Claude Artifacts</li><li>HTML / JavaScript</li><li>Prompt design</li>
+      </ul>
+    </div>
+
+    <figure class="shot">
+      <img src="../assets/daily-brief.png" alt="The Daily Brief page: category tabs along the top, and a hot-topic story card with a summary and key takeaways" width="1280" height="800">
+      <figcaption>The brief page, shown here with the invented sample data I use for testing.</figcaption>
+    </figure>
+
+    <section class="sec" aria-labelledby="h-what">
+      <h2 class="sec-h" id="h-what"><span class="n">1</span>What it does</h2>
+      <p style="margin:0 0 14px">Every morning a scheduled Claude agent reads my newsletters and a set of news sites, picks the most important stories of the last 24 hours, writes the summaries and publishes them to a private page. Then it sends me a short push notification with the top story.</p>
+      <p style="margin:0 0 4px">The stories are split into seven categories:</p>
+      <ul class="pills" aria-label="Categories">
+        <li>Portugal Macro</li><li>Portugal Business</li><li>Geopolitics</li><li>Markets</li><li>M&amp;A</li><li>AI</li><li>Other</li>
+      </ul>
+    </section>
+
+    <section class="sec" aria-labelledby="h-how">
+      <h2 class="sec-h" id="h-how"><span class="n">2</span>How it works</h2>
+      <ol class="steps">
+        <li><b>Collect</b>Reads the newsletters I've labelled for it, plus about 20 news sources, from Observador and ECO to the FT, Reuters and Bloomberg.</li>
+        <li><b>Rank</b>Merges the same story across sources and scores it on impact, novelty, durability and relevance to me. Skips anything already covered in the last 7 days.</li>
+        <li><b>Write</b>3 to 5 stories per category, each with a full summary, key takeaways and one line on why it matters. The Portuguese categories are written in European Portuguese.</li>
+        <li><b>Publish</b>Posts the brief to the page and sends a push notification with the day's hot topic.</li>
+      </ol>
+    </section>
+
+    <section class="sec" aria-labelledby="h-page">
+      <h2 class="sec-h" id="h-page"><span class="n">3</span>The page and the guardrails</h2>
+      <div class="two">
+        <div class="card">
+          <h3>What the page does</h3>
+          <ul>
+            <li>Today's brief by category, with the hot topic first</li>
+            <li>A 7-day calendar to go back to recent briefs</li>
+            <li>Favourites, plus 👍 / 👎 ratings the agent learns from</li>
+            <li>Light and dark mode</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Guardrails I built in</h3>
+          <ul>
+            <li>Read-only email access, limited to one label. It never replies, sends or deletes anything.</li>
+            <li>Web pages and emails are treated as data, never as instructions, so a page can't hijack the agent.</li>
+            <li>Only facts found in the sources. No invented numbers, quotes or names.</li>
+            <li>A dry-run mode to test a brief before anything is published.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <div class="next">
+      <a class="btn" href="../index.html#portfolio">← All projects</a>
+      <a class="btn primary" href="../index.html">Back to home</a>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>© 2026 Frederico Ribeiro Ferreira · New York</span>
+    <div class="f-links">
+      <a href="https://www.linkedin.com/in/frederico-ribeiro-ferreira/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://github.com/fredericoferreira12" target="_blank" rel="noopener">GitHub</a>
+      <a href="../index.html">Home</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

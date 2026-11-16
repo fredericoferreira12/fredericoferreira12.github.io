@@ -8,171 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<style>
-  :root{
-    --bg:#F3F5F9; --bg2:#E6EAF1; --paper:#FFFFFF;
-    --navy:#15284B; --navy-tint:#DDE4F0; --mid:#2D4A7C;
-    --amber:#F2A900; --amber-tint:#FDF0CC; --amber-txt:#7A5200; --on-amber:#15284B;
-    --text:#1E2430; --muted:#5B6475; --line:#DDE2EA;
-    --r:18px; --nav-h:64px;
-    color-scheme:light;
-  }
-  @media (prefers-color-scheme: dark){
-    :root:not([data-theme="light"]){
-      --bg:#0E1524; --bg2:#1A2540; --paper:#152038;
-      --navy:#E8EDF7; --navy-tint:#1F2E52; --mid:#9DB5E0;
-      --amber:#F2A900; --amber-tint:#3A2D0C; --amber-txt:#F7C64D; --on-amber:#15284B;
-      --text:#D8DEE9; --muted:#9AA4B8; --line:#26334F;
-      color-scheme:dark;
-    }
-  }
-  :root[data-theme="dark"]{
-    --bg:#0E1524; --bg2:#1A2540; --paper:#152038;
-    --navy:#E8EDF7; --navy-tint:#1F2E52; --mid:#9DB5E0;
-    --amber:#F2A900; --amber-tint:#3A2D0C; --amber-txt:#F7C64D; --on-amber:#15284B;
-    --text:#D8DEE9; --muted:#9AA4B8; --line:#26334F;
-    color-scheme:dark;
-  }
-
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth;scroll-padding-top:calc(var(--nav-h) + 16px)}
-  @media (prefers-reduced-motion: reduce){html{scroll-behavior:auto}}
-  body{margin:0;background:var(--bg);color:var(--text);font-family:Manrope,system-ui,sans-serif;font-size:16.5px;line-height:1.65;-webkit-font-smoothing:antialiased}
-  a{color:var(--mid)}
-  a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:8px}
-  svg.i{width:20px;height:20px;fill:currentColor;flex:none}
-  .wrap{max-width:1080px;margin:0 auto;padding:0 24px}
-  @media (max-width:600px){.wrap{padding:0 16px}}
-
-  /* ---------- Top bar ---------- */
-  .top{position:sticky;top:0;z-index:30;background:var(--bg);border-bottom:1px solid var(--line)}
-  .top .wrap{display:flex;align-items:center;gap:16px;height:var(--nav-h)}
-  .brand{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--navy);font-weight:800;white-space:nowrap}
-  .brand .mono{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:10px;background:var(--navy);color:var(--bg);font-size:13px;letter-spacing:.02em}
-  :root[data-theme="dark"] .brand .mono{background:var(--amber);color:var(--on-amber)}
-  @media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .brand .mono{background:var(--amber);color:var(--on-amber)}}
-  .links{display:flex;gap:4px;margin-left:auto;overflow-x:auto;scrollbar-width:none;min-width:0}
-  .links::-webkit-scrollbar{display:none}
-  .links a{text-decoration:none;color:var(--muted);font-weight:700;font-size:14px;padding:7px 12px;border-radius:999px;white-space:nowrap}
-  .links a:hover{color:var(--navy);background:var(--bg2)}
-  .links a.on{color:var(--amber-txt);background:var(--amber-tint)}
-  .social{display:flex;gap:6px;padding-left:8px;border-left:1px solid var(--line)}
-  .social a{display:inline-grid;place-items:center;width:36px;height:36px;border-radius:10px;color:var(--navy)}
-  .social a:hover{background:var(--bg2)}
-  @media (max-width:760px){
-    .brand .full{display:none}
-    .social{display:none}
-    .links a{padding:7px 10px;font-size:13.5px}
-  }
-
-  /* ---------- Hero ---------- */
-  .hero{padding:56px 0 28px}
-  .hero .wrap{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:48px;align-items:center}
-  .eyebrow{font-size:13px;letter-spacing:.09em;text-transform:uppercase;font-weight:800;color:var(--mid);margin:0}
-  .hero h1{margin:10px 0 14px;font-size:clamp(36px,6vw,56px);line-height:1.06;font-weight:800;letter-spacing:-.025em;color:var(--navy)}
-  .hero h1 .hl{background:linear-gradient(transparent 62%,var(--amber-tint) 62%);padding:0 2px}
-  .lede{font-size:19px;color:var(--muted);max-width:620px;margin:0 0 20px}
-  .lede strong{color:var(--text)}
-  .chips{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 24px;padding:0;list-style:none}
-  .chip{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:4px 14px;font-size:14px;font-weight:600;color:var(--muted)}
-  .chip b{color:var(--navy)}
-  .btns{display:flex;flex-wrap:wrap;gap:10px}
-  .btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:15px;padding:10px 18px;border-radius:12px;border:1px solid var(--line);background:var(--paper);color:var(--navy);transition:transform .15s,border-color .15s}
-  .btn:hover{transform:translateY(-1px);border-color:var(--mid)}
-  .btn.primary{background:var(--navy);border-color:var(--navy);color:var(--bg)}
-  .photo{width:220px;height:220px;border-radius:50%;object-fit:cover;border:6px solid var(--paper);box-shadow:0 0 0 2px var(--amber);justify-self:end;background:var(--bg2)}
-  @media (max-width:760px){
-    .hero{padding:32px 0 20px}
-    .hero .wrap{grid-template-columns:1fr;gap:20px}
-    .photo{order:-1;justify-self:start;width:112px;height:112px;border-width:4px}
-    .lede{font-size:17px}
-  }
-
-  /* ---------- Quick tiles ---------- */
-  .tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:8px 0 40px}
-  .tile{display:flex;flex-direction:column;gap:6px;text-decoration:none;color:inherit;background:var(--paper);border:1px solid var(--line);border-radius:var(--r);padding:18px 18px 16px;transition:transform .15s,border-color .15s}
-  .tile:hover{transform:translateY(-2px);border-color:var(--amber)}
-  .tile .n{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--amber);color:var(--on-amber);font-weight:800;font-size:13px}
-  .tile h2{margin:6px 0 0;font-size:16px;line-height:1.3;color:var(--navy)}
-  .tile p{margin:0;font-size:14px;line-height:1.5;color:var(--muted)}
-  .tile .go{margin-top:auto;padding-top:6px;font-size:13px;font-weight:700;color:var(--mid)}
-  @media (max-width:900px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
-
-  /* ---------- Sections ---------- */
-  section.sec{background:var(--paper);border:1px solid var(--line);border-radius:22px;padding:32px 36px;margin-bottom:20px}
-  @media (max-width:600px){section.sec{padding:22px 18px;border-radius:18px}}
-  .sec-h{display:flex;align-items:center;gap:12px;margin:0 0 22px;font-size:24px;line-height:1.25;color:var(--navy)}
-  .sec-h .n{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:50%;background:var(--amber);color:var(--on-amber);font-size:15px;flex:none}
-
-  /* Entries (education & roles) */
-  .entry{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 24px;padding:20px 0;border-top:1px solid var(--line)}
-  .entry:first-of-type{border-top:0;padding-top:0}
-  .entry h3{margin:0;font-size:18px;line-height:1.35;color:var(--navy)}
-  .entry h3 .note{font-weight:600;color:var(--muted);font-size:14.5px}
-  .entry .role{margin:0;font-style:italic;color:var(--text)}
-  .entry .meta{text-align:right;font-size:14px;color:var(--muted);white-space:nowrap}
-  .entry .meta b{display:block;color:var(--navy);font-size:14.5px}
-  .entry .body{grid-column:1/-1;margin-top:10px}
-  .entry ul{margin:0;padding-left:20px}
-  .entry li{margin:4px 0}
-  @media (max-width:600px){
-    .entry{grid-template-columns:1fr}
-    .entry .meta{text-align:left;white-space:normal;margin-top:4px}
-    .entry .meta b{display:inline;margin-right:8px}
-  }
-  .grade{display:inline-block;background:var(--navy-tint);color:var(--navy);font-weight:700;font-size:13px;border-radius:999px;padding:1px 10px;margin-left:6px;font-style:normal}
-
-  .intro{margin:0 0 16px;color:var(--text)}
-
-  /* Highlight stats */
-  .stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 20px}
-  .stat{background:var(--bg);border-radius:14px;padding:14px 16px}
-  .stat .v{font-size:24px;font-weight:800;line-height:1.2;color:var(--navy);letter-spacing:-.01em}
-  .stat .l{font-size:13px;line-height:1.45;color:var(--muted);margin-top:4px}
-  @media (max-width:900px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}}
-
-  /* Sector tabs */
-  .tabs{display:flex;flex-wrap:wrap;gap:8px;margin:0 0 14px}
-  .tab{font:inherit;font-size:14px;font-weight:700;padding:7px 14px;border-radius:999px;border:1px solid var(--line);background:var(--paper);color:var(--muted);cursor:pointer}
-  .tab:hover{color:var(--navy);border-color:var(--mid)}
-  .tab[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:var(--bg)}
-  .tab .c{font-weight:600;opacity:.7;margin-left:4px}
-  .panel{background:var(--bg);border-radius:16px;padding:18px 20px}
-  .panel[hidden]{display:none}
-  .proj{display:grid;grid-template-columns:150px minmax(0,1fr);gap:4px 16px;padding:12px 0;border-top:1px dashed var(--line)}
-  .proj:first-child{border-top:0;padding-top:0}
-  .proj:last-child{padding-bottom:0}
-  .proj .k{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--amber-txt);padding-top:3px}
-  .proj p{margin:0}
-  @media (max-width:600px){.proj{grid-template-columns:1fr}}
-
-  /* Deal tiles */
-  .deals{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-  .deal{background:var(--bg);border-radius:16px;padding:16px 18px;border-left:4px solid var(--amber)}
-  .deal .top-row{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin-bottom:6px}
-  .deal .amt{font-size:22px;font-weight:800;color:var(--navy);letter-spacing:-.01em}
-  .deal .tag{font-size:12px;font-weight:800;text-transform:uppercase;letter-spacing:.05em;color:var(--mid);background:var(--navy-tint);border-radius:999px;padding:2px 10px}
-  .deal p{margin:0;font-size:15px;line-height:1.6}
-  @media (max-width:760px){.deals{grid-template-columns:1fr}}
-
-  /* Cards grid (activities, skills) */
-  .grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-  @media (max-width:900px){.grid3{grid-template-columns:1fr}}
-  .card{background:var(--bg);border-radius:16px;padding:18px 20px}
-  .card h3{margin:0 0 2px;font-size:17px;color:var(--navy)}
-  .card .when{font-size:13px;font-weight:700;color:var(--amber-txt)}
-  .card p{margin:8px 0 0;font-size:15px;line-height:1.6}
-  .sub-h{margin:0 0 12px;font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.06em;color:var(--mid)}
-  .pills{display:flex;flex-wrap:wrap;gap:6px;margin-top:10px;padding:0;list-style:none}
-  .pills li{background:var(--paper);border:1px solid var(--line);border-radius:999px;padding:2px 11px;font-size:13.5px;font-weight:600;color:var(--navy)}
-
-  /* Footer */
-  footer{padding:24px 0 56px;color:var(--muted);font-size:14px}
-  footer .wrap{display:flex;flex-wrap:wrap;gap:12px 24px;align-items:center;justify-content:space-between}
-  footer .f-links{display:flex;gap:16px}
-  footer a{font-weight:700;text-decoration:none}
-  footer a:hover{text-decoration:underline}
-</style>
+<link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
 
@@ -186,6 +22,7 @@
       <a href="#experience">Experience</a>
       <a href="#activities">Activities</a>
       <a href="#skills">Skills &amp; Interests</a>
+      <a href="#portfolio">Portfolio</a>
     </nav>
     <div class="social">
       <a href="https://www.linkedin.com/in/frederico-ribeiro-ferreira/" target="_blank" rel="noopener" aria-label="LinkedIn">
@@ -255,6 +92,12 @@
         <h2>Skills &amp; Interests</h2>
         <p>Languages, IT skills, travel, rock, wine, piano</p>
         <span class="go">See skills →</span>
+      </a>
+      <a class="tile" href="#portfolio">
+        <span class="n">5</span>
+        <h2>Portfolio</h2>
+        <p>Daily Brief: an AI agent that writes my morning news</p>
+        <span class="go">See portfolio →</span>
       </a>
     </nav>
 
@@ -429,6 +272,25 @@
       </div>
     </section>
 
+    <!-- ===== 5. Portfolio ===== -->
+    <!-- To add a project: copy one .pcard below and create projects/<name>.html from projects/daily-brief.html -->
+    <section class="sec" id="portfolio" aria-labelledby="h-port">
+      <h2 class="sec-h" id="h-port"><span class="n">5</span>Portfolio</h2>
+      <p class="port-intro">Things I've built. Click a project for the details.</p>
+      <div class="port-grid">
+        <a class="pcard" href="projects/daily-brief.html">
+          <div class="thumb"><img src="assets/daily-brief.png" alt="The Daily Brief page with category tabs and a story card" width="1280" height="800" loading="lazy"></div>
+          <div class="pbody">
+            <p class="kicker">AI agent · 2026</p>
+            <h3>Daily Brief</h3>
+            <p>An AI agent that reads the news every morning, picks the stories that matter and writes my personal brief.</p>
+            <ul class="pills"><li>Claude</li><li>Agents</li><li>HTML / JS</li></ul>
+            <span class="go">See project →</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
   </div>
 </main>
 
@@ -464,29 +326,32 @@
   });
 
   // Highlight the current section in the top bar.
-  // Only toggles a class when the section changes; never scrolls the page.
+  // Uses IntersectionObserver, so no code runs on each scroll frame,
+  // and it never scrolls the page.
   const nav = document.querySelector('.links');
   const navLinks = [...nav.querySelectorAll('a')];
   const sections = navLinks.map(a=>document.getElementById(a.hash.slice(1)));
-  let active = -1, ticking = false;
-  function update(){
-    ticking = false;
-    const line = innerHeight * 0.35;
-    let idx = -1;
-    sections.forEach((s,i)=>{ if(s.getBoundingClientRect().top <= line) idx = i; });
-    if(innerHeight + scrollY >= document.documentElement.scrollHeight - 4) idx = sections.length - 1;
+  let active = -1;
+  function setActive(idx){
     if(idx === active) return;
     active = idx;
     navLinks.forEach((a,i)=>a.classList.toggle('on', i===idx));
     // On narrow screens, slide the nav strip sideways only (not the page)
     if(idx >= 0 && nav.scrollWidth > nav.clientWidth){
-      const a = navLinks[idx];
-      nav.scrollTo({left: a.offsetLeft - nav.offsetLeft - 8, behavior:'auto'});
+      nav.scrollLeft = navLinks[idx].offsetLeft - nav.offsetLeft - 8;
     }
   }
-  addEventListener('scroll', ()=>{ if(!ticking){ ticking = true; requestAnimationFrame(update); } }, {passive:true});
-  addEventListener('resize', update);
-  update();
+  if('IntersectionObserver' in window){
+    // A thin line 35% down the screen: whichever section crosses it is current.
+    const io = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{ if(e.isIntersecting) setActive(sections.indexOf(e.target)); });
+    }, {rootMargin:'-35% 0px -64% 0px'});
+    sections.forEach(s=>io.observe(s));
+    // Reaching the footer means the last section is current.
+    new IntersectionObserver(entries=>{
+      if(entries[0].isIntersecting) setActive(sections.length - 1);
+    }).observe(document.querySelector('footer'));
+  }
 </script>
 </body>
 </html>
